@@ -266,6 +266,15 @@ nav {
   margin-bottom: 3rem;
 }
 
+.pricing__image {
+    width: 100%;          /* Make image fill the card’s width */
+    height: 200px;        /* Fixed height for all images */
+    object-fit: cover;    /* Crop & maintain aspect ratio */
+    border-radius: 8px;   /* Optional: rounded corners */
+    margin-bottom: 15px;  /* Space below image */
+    display: block;
+}
+
 .pricing__grid {
   margin-top: 2rem;
   display: grid;
@@ -273,6 +282,8 @@ nav {
   /* Default: 1 column on small screens */
   grid-template-columns: repeat(1, 1fr); 
   text-align: center;
+
+  align-items: stretch;
 }
 
 .pricing__card {
@@ -281,10 +292,14 @@ nav {
   border: 1px solid var(--extra-light);
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: 0.3s;
+  transition: background-color 0.3s, box-shadow 0,3s, border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .pricing__card:hover {
+  background-color: #F5EBE0;
   border-color: var(--text-dark);
   box-shadow: 0 6px 20px rgba(0, 51, 102, 0.15);
 }
@@ -306,13 +321,97 @@ nav {
   line-height: 1.5;
 }
 
+.pricing__card .deposit {
+    margin-bottom: 15px; /* adjust spacing as needed */
+}
+
+/* Space after h5 in all pricing cards */
+.pricing__card h5 {
+    margin-bottom: 15px; /* adjust for desired spacing */
+}
+
+/* Space after all ul lists in pricing cards */
+.pricing__card ul {
+    margin-bottom: 15px; /* adjust for desired spacing */
+}
 .pricing__container .btn {
   width: 100%;
   max-width: 250px;
   padding: 1rem;
   font-size: 1.05rem;
   /* Override default button color for visual distinction */
-  background-color: var(--text-dark); 
+  background-color: #8B5E3C; 
+  color: #ffffff;
+  border: 2px solid #8B5E3C; /* optional: adds nice border */
+  border-radius: 6px;
+  display: block;
+  margin-top: 1rem;
+  transition: background-color 0.3s, color 0,3s;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+  align-self: center;
+}
+  
+/* Hover effect: swap colors */
+.pricing__container .btn:hover {
+    background-color: #ffffff; /* turns white */
+    color: #8B5E3C; /* text turns brown */
+    border-color: #8B5E3C; /* maintain brown border */
+}
+
+.payment-options {
+    max-width: 800px;
+    margin: 2rem auto;          /* center it vertically with spacing */
+    padding: 1.5rem 2rem;       /* padding inside the box */
+    background-color: var(--extra-light); /* pick a contrasting color */
+    border-radius: 12px;        /* rounded corners */
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.payment-options h4 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+}
+
+.payment-methods {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem; /* space between each method */
+}
+
+.payment-method {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* space between logo and text */
+}
+
+.payment-method img {
+    width: 40px;  /* adjust logo size */
+    height: auto;
+}
+
+.payment-method span {
+    font-size: 1rem;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+
+/* For all unordered lists inside pricing cards */
+.pricing__card ul {
+    padding-left: 20px;  /* controls distance from the card edge */
+    margin-left: 0;      /* remove extra left margin */
+    margin-bottom: 15px; /* keeps space below the list */
+}
+
+/* Optional: adjust bullet style */
+.pricing__card ul li {
+    list-style-position: outside; /* default, bullets outside text */
+    line-height: 1.5;             /* makes the text more readable */
 }
 
 .pricing__container a.btn:hover {
@@ -333,6 +432,48 @@ nav {
     /* 3 columns on larger screens (since you have 6 cards, 2 rows of 3 is efficient) */
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* --- Animate Payment Options --- */
+.payment-method span {
+    font-size: 1rem;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: all 0.3s ease; /* smooth animation for scale & color */
+}
+
+.payment-method:hover span {
+    color: var(--primary-color); /* change text color on hover */
+    transform: scale(1.1);       /* slightly bigger */
+}
+
+/* Optionally, animate the logo too */
+.payment-method img {
+    transition: transform 0.3s ease;
+}
+
+.payment-method:hover img {
+    transform: scale(1.1);
+}
+
+/* --- Animate Pricing Card Headings --- */
+.pricing__card h3 {
+    transition: all 0.3s ease;
+}
+
+.pricing__card:hover h3 {
+    color: var(--primary-color); /* subtle color change */
+    transform: scale(1.05);      /* slightly bigger text */
+}
+
+/* Animate the price as well */
+.pricing__card .price {
+    transition: all 0.3s ease;
+}
+
+.pricing__card:hover .price {
+    color: var(--primary-color);
+    transform: scale(1.05);
 }
 
 .client__container {
